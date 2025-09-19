@@ -2,6 +2,11 @@
   width: 100%;
 }
 
+h4.date-time{
+  font-size: var(--font-sm);
+  line-height: var(--line-sm);
+}
+
 .card-head img.thumbnail,
 .card-head .thumbnail-video {
   width: 100%;
@@ -39,8 +44,8 @@
 .card-body .author {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  margin-top: var(--space-3);
+  gap: var(--space-4);
+  margin: var(--space-2) 0 var(--space-4) 0;
 }
 
 .card-body .author > img {
@@ -149,5 +154,9 @@ span.live-icon .live-text{
   .credits > img{
     width: 20px;
     height: 20px;
+  }
+  .author-name{
+    font-size: var(--font-xs);
+    line-height: var(--line-xs);
   }
 }

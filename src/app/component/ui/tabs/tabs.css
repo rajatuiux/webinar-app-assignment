@@ -4,9 +4,10 @@
 }
 
 .tabBar {
-    padding: var(--space-6) 0;
+    padding: var(--space-4) 0 0 0;
     display: flex;
     position: relative;
+    margin-top: var(--space-5);
 }
 
 .tabBar:after{
@@ -16,7 +17,7 @@
     height: 1px;
     width: 100%;
     left: 0;
-    bottom: 18px;
+    bottom: -4px;
     background-color: var(--light-border);
 }
 

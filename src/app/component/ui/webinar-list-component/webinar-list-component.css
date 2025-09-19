@@ -254,39 +254,9 @@
     gap: var(--space-4);
 }
 
-/* Mobile responsive styles for webinar grid */
-@media (max-width: 767px) {
-    .recommended-webinars-grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-5);
-    }
-    
-    .webinar-card-large {
-        grid-template-rows: auto auto 1fr auto;
-    }
-    
-    .action-buttons {
-        flex-wrap: wrap;
-        gap: var(--space-2);
-    }
-    
-    .action-btn {
-        width: calc(50% - var(--space-1));
-        min-width: 80px;
-    }
-}
-
-/* Tablet responsive styles for webinar grid */
-@media (max-width: 1023px) and (min-width: 768px) {
-    .recommended-webinars-grid {
-        gap: var(--space-3);
-    }
-}
-
 .webinar-card-large {
     display: grid;
-    grid-template-rows: 78px 234px 1fr auto;
-    align-items: flex-start;
+    grid-template-rows: 78px auto 1fr auto;
     border: 1px solid var(--light-border);
     border-radius: var(--radius-md);
     background: #ffffff;
@@ -315,7 +285,6 @@
     width: 100%;
     object-fit: cover;
     overflow: hidden;
-    margin-bottom: 16px;
 }
 
 .webinar-image img {
@@ -456,11 +425,8 @@ a.more-vertical-menu:hover{
 }
 
 .webinar-credits {
-    position: absolute;
-    top: -218px;
-    left: 8px;
-    background: #fbbf24;
-    color: #92400e;
+    background: var(--bg-brown-300);
+    color: var(--primary-black);
     padding: 4px 8px;
     border-radius: 4px;
     font-size: 12px;
@@ -469,23 +435,17 @@ a.more-vertical-menu:hover{
     align-items: center;
     gap: 4px;
     z-index: 10;
+    width: fit-content;
+    margin-bottom: var(--space-3);
 }
 
 /* Mobile responsive styles for credits positioning */
 @media (max-width: 767px) {
     .webinar-credits {
-        position: static;
-        background: #fbbf24;
-        color: #92400e;
         padding: 4px 8px;
-        border-radius: 4px;
         font-size: 12px;
         font-weight: 600;
-        display: inline-flex;
-        align-items: center;
         gap: 4px;
-        margin-bottom: var(--space-3);
-        width: fit-content;
     }
 }
 
@@ -662,5 +622,30 @@ a.more-vertical-menu:hover{
 @media (min-width: 768px) {
     .sidebar-overlay {
         display: none !important;
+    }
+}
+
+/* Mobile responsive styles for webinar grid */
+@media (max-width: 767px) {
+    .recommended-webinars-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-5);
+    }
+    
+    .webinar-card-large {
+        grid-template-rows: auto auto 1fr auto;
+    }
+    
+    .action-buttons {
+        display: flex;
+        gap: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    .action-btn {
+        width: 80px;
+        font-size: var(--font-xs);
+        line-height: var(--line-xs);
     }
 }

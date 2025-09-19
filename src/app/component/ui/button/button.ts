@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,7 +9,18 @@ import { CommonModule } from '@angular/common';
 })
 export class Button {
   @Input() variant: string = 'primary'; // primary, secondary, pill-button, primary-small, etc.
-  @Input() size?: 'sm' | 'md' | 'lg';   // optional size
-  @Input() active: boolean = false;     // optional active state
-  @Input() label: string = '';          // text displayed on the button
+  @Input() size?: 'sm' | 'md' | 'lg';
+  @Input() active: boolean = false;
+  @Input() label: string = '';
+
+  screenWidth = window.innerWidth;
+  
+  ngOnInit() {
+    this.onResize();
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    this.screenWidth = window.innerWidth;
+  }
 }

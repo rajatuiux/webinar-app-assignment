@@ -64,34 +64,20 @@
     gap: var(--space-4);
     flex: none;
   }
-  
-  /* Back button (using placeholder) */
-  .logo {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: var(--font-md);
-    font-weight: bold;
-    color: var(--primary-black);
-  }
 
   img.logo.back{
     transform: rotate(180deg);
-  }
-  
-  .logo::before {
-    content: "←";
+    width: 24px;
+    height: 24px;
   }
   
   /* Page title */
   .left-section::after {
     content: "Webinar";
     font-family: var(--font-heading);
-    font-weight: 600;
+    font-weight: 500;
     font-size: var(--font-lg);
+    line-height: var(--line-lg);
     color: var(--primary-black);
   }
   
@@ -112,21 +98,14 @@
     align-items: center;
     gap: var(--space-4);
   }
+
+  .right-section button{
+    border: none;
+    background: none;
+  }
   
   .post-button {
     display: none !important;
-  }
-  
-  /* Search icon placeholder */
-  .right-section::before {
-    content: "🔍";
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: var(--font-md);
   }
   
   /* Hamburger menu (replacing user section) */
@@ -153,18 +132,6 @@
     display: none !important;
   }
   
-  /* Hamburger menu placeholder */
-  .user-section::before {
-    content: "☰";
-    font-size: var(--font-md);
-    color: var(--primary-black);
-    position: static;
-    transform: none;
-    width: auto;
-    height: auto;
-    background: none;
-    box-shadow: none;
-  }
 }
 
 /* Tablet responsive styles */
@@ -335,4 +302,10 @@
   left: 793px;
   width: 24px;
   height: 24px;
+}
+
+@media (max-width: 767px) {
+  .header-wrapper{
+    box-shadow: none;
+  }
 }

@@ -18,9 +18,10 @@ interface NavigationItem {
   styleUrl: './header.css'
 })
 export class Header {
-  screenWidth = window.innerWidth;
   searchText: string = '';
-
+  
+  screenWidth = window.innerWidth;
+  
   ngOnInit() {
     this.onResize();
   }

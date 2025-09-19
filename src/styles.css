@@ -28,8 +28,8 @@
   --secondary-info: #2F80ED;
 
   /* Typography scale */
-  --font-xs: 10px;
-  --line-xs: 14px;
+  --font-xs: 12px;
+  --line-xs: 16px;
 
   --font-sm: 14px;
   --line-sm: 20px;
@@ -147,6 +147,13 @@
   text-decoration: none;
 }
 
+h1{
+  font-family: var(--font-heading);
+  font-size: var(--font-xl);
+  line-height: var(--line-xl);
+  font-weight: 500;
+}
+
 .d-container {
   margin: 0 auto;
   width: 100%;
@@ -220,5 +227,14 @@
 @media (max-width: 767px) {
   h1.web-heading-03{
     display: none;
+  }
+  .key-highlights-label{
+    font-size: 9px;
+    line-height: 14px;
+  }
+  .highlight-text{
+    font-size: var(--font-xs);
+    line-height: var(--line-xs);
+    font-weight: 600;
   }
 }

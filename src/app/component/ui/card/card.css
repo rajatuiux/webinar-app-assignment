@@ -130,3 +130,24 @@ span.live-icon .live-text{
 ::ng-deep .small-cards .card-body .author {
   margin-top: var(--space-2) !important;
 }
+
+@media (max-width: 767px) {
+  .webinar-title{
+    font-size: var(--font-sm);
+    line-height: var(--line-sm);
+  }
+
+  .credits{
+    margin-bottom: var(--space-2);
+  }
+
+  .credits > span{
+    font-size: var(--font-xs);
+    line-height: var(--line-xs);
+  }
+
+  .credits > img{
+    width: 20px;
+    height: 20px;
+  }
+}

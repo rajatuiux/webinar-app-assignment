@@ -4,7 +4,7 @@
       <img *ngIf="screenWidth > 768" class="logo" src="assets/doc-logo.svg" alt="logo">
       <img *ngIf="screenWidth < 768"
      class="logo back"
-     src="assets/icons/chevron-right.svg"
+     src="assets/icons/right-arrow.svg"
      alt="back-icon">
       
       <div class="search-container">
@@ -33,13 +33,24 @@
     </nav>
 
     <div class="right-section">
+      <button class="search-mobile">
+        <img *ngIf="screenWidth < 768"
+          src="assets/icons/search.svg"
+          alt="search-icon">
+      </button>
       <button class="post-button" (click)="createPost()">
         <img src="assets/icons/plus-icon-for-button.svg" alt="Plus" class="button-icon">
         <span>Post</span>
       </button>
 
       <div class="user-section" (click)="toggleSidebar()">
+        <button class="filter-mobile">
+        <img *ngIf="screenWidth < 768"
+          src="assets/icons/filter.svg"
+          alt="filter-icon">
+      </button>
         <div class="avatar-container">
+          
           <img src="assets/icons/ellipse-156.png" alt="Aaron" class="avatar">
           <img src="assets/icons/verified-badge-icon.svg" alt="Verified" class="verified-badge">
         </div>

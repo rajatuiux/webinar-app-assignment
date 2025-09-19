@@ -5,4 +5,5 @@
         src="assets/icons/bell-icon-for-button.svg" 
         alt="">
     {{ label }}
+    <img *ngIf="screenWidth < 768" src="assets/icons/right-arrow.svg" alt="">
 </button>

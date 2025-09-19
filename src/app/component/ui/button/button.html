@@ -1,0 +1,8 @@
+<button [ngClass]="['btn', 'btn--' + variant, size ? 'btn--' + size : '', active ? 'active' : '']">
+    <img 
+        *ngIf="variant === 'primary-notify'" 
+        style="margin-right: 4px;" 
+        src="assets/icons/bell-icon-for-button.svg" 
+        alt="">
+    {{ label }}
+</button>

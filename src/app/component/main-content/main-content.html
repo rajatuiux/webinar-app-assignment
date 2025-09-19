@@ -1,0 +1,34 @@
+<main class="d-container">
+  <app-tabs></app-tabs>
+
+  <!-- Webinars -->
+   <app-category-container
+      title="For you"
+      [items]="continueWebinarItemArray">
+  </app-category-container>
+  
+  <app-category-container
+      title="Live"
+      [items]="liveWebinarItemArray">
+  </app-category-container>
+
+  <app-category-container
+      title="Upcoming"
+      [items]="upcomingWebinarItemArray">
+  </app-category-container>
+
+  <app-category-container
+      title="Webinars based on cardiology"
+      [items]="cardiologyWebinarItemArray">
+  </app-category-container>
+
+  <!-- Speakers -->
+  <app-category-container
+      title="Speakers"
+      [speakerItems]="speakerContentArray">
+  </app-category-container>
+</main>
+
+<main>
+    <app-webinar-list-component></app-webinar-list-component>
+</main>

@@ -1,0 +1,9 @@
+<div class="tab-main">
+    <h1 class="web-heading-03">Webinar</h1>
+    <div class="tabBar">
+        <div *ngFor="let item of tabItems; let i = index" class="tab-item" [class.active]="item.active"
+            (click)="selectTabItem(i)">
+            <span [ngClass]="item.className">{{ item.label }}</span>
+        </div>
+    </div>
+</div>

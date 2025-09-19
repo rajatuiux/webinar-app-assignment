@@ -1,0 +1,37 @@
+.tab-main {
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-12);
+}
+
+.tabBar {
+    margin: var(--space-6) 0;
+    display: flex;
+}
+
+.tab-item {
+    padding: 0 var(--space-5) var(--space-2);
+    cursor: pointer;
+}
+
+.tab-item span {
+    font-weight: 500;
+    color: var(--dark-500);
+}
+
+.tab-item.active {
+    position: relative;
+}
+
+.tab-item.active span {
+    font-weight: 700;
+}
+
+.tab-item.active::after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    left: 0;
+    bottom: calc(-1 * var(--space-1-5));
+    background-color: var(--dark-500);
+}

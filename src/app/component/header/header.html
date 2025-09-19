@@ -1,0 +1,48 @@
+<header class="header-wrapper">
+  <div class="header-container d-container">
+    <div class="left-section">
+      <img class="logo" src="assets/doc-logo.svg" alt="logo">
+      
+      <div class="search-container">
+        <input 
+          type="text" 
+          placeholder="Search in docquity" 
+          class="search-input"
+          [(ngModel)]="searchText"
+        >
+        <div class="search-icon">
+          <img src="assets/icons/search.svg" alt="Search">
+        </div>
+      </div>
+    </div>
+
+    <nav class="navigation">
+      <div 
+        *ngFor="let item of navigationItems; let i = index" 
+        class="nav-item"
+        [class.active]="item.active"
+        (click)="selectNavItem(i)"
+      >
+        <img *ngIf="item.icon" [src]="item.icon" [alt]="item.label" class="nav-icon">
+        <span [ngClass]="item.className">{{ item.label }}</span>
+      </div>
+    </nav>
+
+    <div class="right-section">
+      <button class="post-button" (click)="createPost()">
+        <img src="assets/icons/plus-icon-for-button.svg" alt="Plus" class="button-icon">
+        <span>Post</span>
+      </button>
+
+      <div class="user-section">
+        <div class="avatar-container">
+          <img src="assets/icons/ellipse-156.png" alt="Aaron" class="avatar">
+          <img src="assets/icons/verified-badge-icon.svg" alt="Verified" class="verified-badge">
+        </div>
+        <span class="username">Aaron</span>
+        <img src="assets/icons/chevron-down.svg" alt="Dropdown" class="dropdown-icon">
+      </div>
+    </div>
+  </div>
+
+</header>

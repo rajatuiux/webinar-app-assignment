@@ -1,0 +1,34 @@
+<div class="category-container" *ngIf="title !== 'Speakers'" [attr.id]="getSectionId(title)">
+  <div class="header-row">
+    <h2 class="title heading-card">{{ title }}</h2>
+    <app-button label="View all" variant="secondary" size="sm"></app-button>
+  </div>
+
+  <div
+    class="carousel"
+    #carousel
+    (mousedown)="onDragStart($event, carousel)"
+    (mouseup)="onDragEnd()"
+    (mouseleave)="onDragEnd()"
+    (mousemove)="onDragMove($event, carousel)">
+    <div
+      class="card"
+      *ngFor="let item of items; let i = index"
+      [ngClass]="{ 'small-cards': title === 'Continue watching' }">
+      <app-card [item]="item"></app-card>
+    </div>
+  </div>
+</div>
+
+<div class="speaker-container" *ngIf="title === 'Speakers'" id="speakers">
+  <div class="header-row">
+    <h2 class="title">{{ title }}</h2>
+    <app-button label="View all" variant="secondary" size="md"></app-button>
+  </div>
+
+  <div class="carousel speaker-carousel">
+    <div class="card-speaker" *ngFor="let speaker of speakerItems; let i = index">
+      <app-speaker [item]="speaker"></app-speaker>
+    </div>
+  </div>
+</div>

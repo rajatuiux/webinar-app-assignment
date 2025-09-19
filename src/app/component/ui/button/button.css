@@ -1,0 +1,85 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: var(--font-md);
+  line-height: var(--line-md);
+  transition: all 0.2s ease;
+}
+
+/* Sizes */
+.btn--sm {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-sm);
+  line-height: var(--line-sm);
+  width: auto;
+}
+
+.btn--md {
+  padding: var(--space-2) var(--space-4);
+}
+
+.btn--lg {
+  padding: var(--space-3) var(--space-5);
+}
+
+/* Variants */
+.btn--primary {
+  background: var(--primary-black);
+  color: var(--whitish);
+}
+
+.btn--primary:hover,
+.btn--primary.active {
+  background: var(--primary-black-gradient);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--primary-black);
+  border: 1px solid var(--primary-black);
+}
+
+.btn--secondary:hover,
+.btn--secondary.active {
+  background: var(--primary-black);
+  color: var(--whitish);
+}
+
+.btn--danger {
+  background: var(--error);
+  color: var(--whitish);
+}
+
+.btn--primary-notify{
+  background: var(--primary-black);
+  color: var(--whitish);
+}
+
+.btn--primary-notify.active, .btn--primary-notify:hover{
+  background: var(--primary-black-gradient);
+  color: var(--whitish) ;
+}
+
+.btn--pill-button {
+  background: var(--whitish);
+  color: var(--secondary-deep-green);
+  padding: var(--space-1-5) var(--space-4);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-sm);
+  line-height: var(--line-sm);
+  font-weight: 500;
+  border: 1px solid var(--dark-300);
+}
+
+.btn--pill-button:hover,
+.btn--pill-button.active {
+  background: var(--secondary-deep-green);
+  color: var(--whitish);
+  border-color: var(--secondary-deep-green);
+}

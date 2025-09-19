@@ -1,0 +1,144 @@
+<!-- Browse by Topic Section -->
+<section class="browse-by-topic-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Browse by topic</h2>
+      <app-button label="View all" variant="secondary" size="md"></app-button>
+    </div>
+    <div class="topic-tags">
+      <app-button
+        class="topic-tag"
+        *ngFor="let topic of topicTags"
+        [active]="isSelected('topics', topic.name)"
+        (click)="toggleSelection('topics', topic.name)"
+        [label]="topic.name + ' (' + topic.count + ')'"
+        variant="pill-button">
+      </app-button>
+    </div>
+  </div>
+</section>
+
+<!-- Main Content with Sidebar -->
+<section class="main-content-section">
+  <div class="container">
+    <div class="content-layout">
+
+      <!-- Left Sidebar -->
+      <aside class="sidebar">
+        <div class="webinars-you-may-like">
+          <h3 class="sidebar-title">Webinars you may like</h3>
+
+          <ng-container *ngFor="let filter of filters">
+            <div class="filter-section">
+              <div
+                class="filter-header"
+                role="button"
+                tabindex="0"
+                (click)="toggleAccordion(filter.key)"
+                [attr.aria-expanded]="accordionOpen[filter.key]">
+                <span class="filter-title">{{ filter.label }}</span>
+                <img
+                  class="filter-arrow"
+                  src="assets/icons/chevron-right.svg"
+                  alt="toggle"
+                  [class.rotated]="accordionOpen[filter.key]">
+              </div>
+
+              <div class="filter-content" [class.open]="accordionOpen[filter.key]">
+                <div class="filter-options">
+                  <label class="filter-option" *ngFor="let item of filter.items">
+                    <input
+                      type="checkbox"
+                      [checked]="isSelected(filter.key, item.name)"
+                      (change)="toggleSelection(filter.key, item.name, $event.target.checked)" />
+                    <span class="checkmark"></span>
+                    <span class="option-text">{{ item.name }}</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="main-content">
+        <div class="recommended-webinars">
+          <div class="recommended-webinars-grid" *ngIf="filteredWebinars.length; else noResults">
+            <div class="webinar-card-large" *ngFor="let webinar of filteredWebinars">
+              <div class="webinar-header">
+                <div class="group">
+                  <img [src]="webinar.organizerLogo" [alt]="webinar.organizer" class="organizer-logo">
+                <div class="organizer-info">
+                  <span class="organizer-name">{{webinar.organizer}}</span>
+                  <span class="sponsored-by">Sponsored by {{webinar.sponsor}}</span>
+                  <div class="webinar-stats">
+                    <span class="followers">{{webinar.followers}} followers</span>
+                    <span class="time-ago">{{webinar.timeAgo}}</span>
+                  </div>
+                </div>
+                </div>
+                <div class="head-right">
+                  <div class="follow-link">
+                    <a class="follow-btn" href="">
+                      <img src="assets/icons/plus-icon-link-blue.svg" alt="">
+                      <span>Follow</span>
+                    </a>
+                  </div>
+                  <a class="more-vertical-menu" href="">
+                    <img class="more-vertical-menu-icon" src="assets/icons/more_vert.svg" alt="">
+                  </a>
+                </div>
+              </div>
+              <div class="webinar-image">
+                <img [src]="webinar.image" [alt]="webinar.title">
+              </div>
+              <div class="webinar-content">
+                <div class="credits webinar-credits">
+                  <img src="assets/icons/credits-icon.svg" alt="">
+                  <span>{{webinar.credits}} Credits</span>
+                  <span class="expiry">(Expiring in {{webinar.expiryDays}})</span>
+                </div>
+                <h3 class="webinar-title heading-card">{{webinar.title}}</h3>
+                <div class="key-highlights">
+                  <p class="key-highlights-label">Key highlights</p>
+                  <ul>
+                    <li class="highlight-text" *ngFor="let highlight of webinar.keyHighlights">{{highlight}}</li>
+                  </ul>
+                </div>
+
+                <div class="engagement-stats">
+                  <div class="like-and-comment">
+                    <span class="likes">{{webinar.likes}} Likes</span>
+                    <span class="comments">{{webinar.comments}} Comments</span>
+                  </div>
+                  <span class="views">{{webinar.views}} Views</span>
+                </div>
+              </div>
+              <div class="webinar-actions">
+                <div class="action-buttons">
+                  <button class="action-btn like-btn">
+                    <img src="assets/icons/social/like.svg" alt="like-icon-button">Like
+                  </button>
+                  <button class="action-btn comment-btn">
+                    <img src="assets/icons/social/comment.svg" alt="like-icon-button">Comment
+                  </button>
+                  <button class="action-btn repost-btn">
+                    <img src="assets/icons/social/repost.svg" alt="like-icon-button">Repost
+                  </button>
+                  <button class="action-btn share-btn">
+                    <img src="assets/icons/social/forward.svg" alt="like-icon-button">Share
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ng-template #noResults>
+            <p class="no-filter">No webinars found. Try adjusting your filters.</p>
+          </ng-template>
+        </div>
+      </main>
+
+    </div>
+  </div>
+</section>

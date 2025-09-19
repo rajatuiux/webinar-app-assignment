@@ -1,0 +1,20 @@
+<div class="speaker-body">
+    <div class="speaker-top">
+        <div class="speaker-avatar">
+            <span [ngClass]="{ 'live': item.isLive }">
+                <img src="{{item.speakerPic}}" alt="">
+                <span *ngIf="item.isLive" class="liveLabel">
+                    <img src="assets/icons/live-minimal.svg" alt="live icon">
+                    <span>Live</span>
+                </span>
+            </span>
+        </div>
+    </div>
+    <div class="speaker-bottom">
+        <a href="" class="arrowLink">
+            <p class="speakerName">{{ item.speaker }}</p>
+            <img src="assets/icons/chevron-right.svg" alt="Right arrow link">
+        </a>
+        <p class="exper-in">{{ item.expertIn }}</p>
+    </div>
+</div>

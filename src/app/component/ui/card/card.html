@@ -1,0 +1,50 @@
+<div class="card-details">
+  <div class="card-head">
+    <img *ngIf="!item.isVideo" class="thumbnail" [src]="item.thumbnail || ''" alt="thumbnail">
+
+    <div class="video-wrapper" *ngIf="item.isVideo">
+      <img *ngIf="!isPlaying" class="thumbnail" [src]="item.thumbnail" alt="Video thumbnail" (click)="playVideo()">
+      <video *ngIf="isPlaying" #videoRef class="thumbnail-video" [src]="item.videoUrl" playsinline autoplay controls></video>
+      <span class="live-icon">
+        <img src="assets/icons/live-minimal-white.svg" alt="">
+        <span class="live-text">Live</span>
+      </span>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="credits" *ngIf="item.credits">
+      <img src="assets/icons/credits-icon.svg" alt="">
+      <span>{{ item.credits }} Credits</span>
+    </div>
+
+    <h3 class="webinar-title heading-card">{{ item.title }}</h3>
+
+    <div class="author">
+      <img *ngIf="item.authorPic" [src]="item.authorPic || ''" alt="author">
+      <p class="author-name">{{ item.authorName }}</p>
+      <p class="time-left author-name">{{ item.timeLeft }}</p>
+    </div>
+
+    <div class="key-highlights" *ngIf="item.isKeyHighlights">
+      <p class="key-highlights-label">Key highlights</p>
+      <p class="highlight-text">Manage chronic and complex diseases</p>
+    </div>
+
+    <div class="buttonFooter" *ngIf="!item.notify && item.isButton">
+      <div class="watchButton">
+        <app-button label="Watch now" variant="primary" size="md"></app-button>
+      </div>
+    </div>
+  </div>
+
+  <div class="buttonFooter" *ngIf="item.notify && item.isButton" [ngClass]="{'pd-notify': item.notify}">
+    <div class="notifyContent">
+      <div class="timeGroup">
+        <p class="author-name">Goes live on</p>
+        <h4 class="date-time">{{ item.date }}, {{ item.time }}</h4>
+      </div>
+      <app-button label="Notify me" variant="primary-notify" size="sm"></app-button>
+    </div>
+  </div>
+</div>

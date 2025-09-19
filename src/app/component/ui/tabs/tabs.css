@@ -4,13 +4,27 @@
 }
 
 .tabBar {
-    margin: var(--space-6) 0;
+    padding: var(--space-6) 0;
     display: flex;
+    position: relative;
+}
+
+.tabBar:after{
+    content: "";
+    display: block;
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    left: 0;
+    bottom: 18px;
+    background-color: var(--light-border);
 }
 
 .tab-item {
     padding: 0 var(--space-5) var(--space-2);
     cursor: pointer;
+    white-space: nowrap;
+    position: relative;
 }
 
 .tab-item span {
@@ -18,15 +32,11 @@
     color: var(--dark-500);
 }
 
-.tab-item.active {
-    position: relative;
-}
-
 .tab-item.active span {
     font-weight: 700;
 }
 
-.tab-item.active::after {
+.tab-item:hover::after {
     content: "";
     position: absolute;
     height: 3px;
@@ -34,4 +44,55 @@
     left: 0;
     bottom: calc(-1 * var(--space-1-5));
     background-color: var(--dark-500);
+}
+
+/* Mobile responsive styles - Android UI design */
+@media (max-width: 767px) {
+    .tab-main {
+        background: var(--whitish);
+        border-bottom: 1px solid var(--light-border);
+        margin: 0;
+        padding: 0;
+    }
+    
+    .tabBar {
+        display: flex;
+        justify-content: space-around;
+        margin: 0;
+        padding: var(--space-3) 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    
+    .tabBar:after{
+        display: none;
+    }
+    
+    .tabBar::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .tab-item {
+        padding: 0 var(--space-3) var(--space-1);
+        flex-shrink: 0;
+        min-width: fit-content;
+    }
+    
+    .tab-item span {
+        font-size: var(--font-sm);
+        font-weight: 500;
+    }
+    
+    .tab-item.active::after {
+        bottom: calc(-1 * var(--space-1));
+        height: 2px;
+    }
+}
+
+/* Tablet responsive styles */
+@media (max-width: 1023px) and (min-width: 768px) {
+    .tab-item {
+        padding: 0 var(--space-4) var(--space-2);
+    }
 }

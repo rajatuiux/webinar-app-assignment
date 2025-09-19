@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Button } from '../button/button';
+import { SidebarService } from '../../../services/sidebar.service';
+import { Subscription } from 'rxjs';
 
 type FilterKey = 'topics' | 'specialties' | 'speakers' | 'pharma';
 
@@ -32,7 +34,9 @@ interface Webinar {
   templateUrl: './webinar-list-component.html',
   styleUrl: './webinar-list-component.css',
 })
-export class WebinarListComponent {
+export class WebinarListComponent implements OnInit, OnDestroy {
+  isSidebarOpen = false;
+  private sidebarSubscription?: Subscription;
   topicTags = [
     { name: 'Cardiologist', count: 4 },
     { name: 'Emergency Medicine', count: 2 },
@@ -162,6 +166,24 @@ export class WebinarListComponent {
     speakers: false,
     pharma: false,
   };
+
+  constructor(private sidebarService: SidebarService) {}
+
+  ngOnInit() {
+    this.sidebarSubscription = this.sidebarService.sidebarOpen$.subscribe(
+      isOpen => this.isSidebarOpen = isOpen
+    );
+  }
+
+  ngOnDestroy() {
+    if (this.sidebarSubscription) {
+      this.sidebarSubscription.unsubscribe();
+    }
+  }
+
+  closeSidebar() {
+    this.sidebarService.closeSidebar();
+  }
 
   toggleAccordion(key: FilterKey) {
     this.accordionOpen[key] = !this.accordionOpen[key];

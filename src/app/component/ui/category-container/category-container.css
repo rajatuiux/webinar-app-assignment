@@ -58,6 +58,61 @@
   width: 252px;
 }
 
+/* Mobile responsive styles - Horizontal carousel with 300px cards */
+@media (max-width: 767px) {
+  .header-row {
+    margin: var(--space-6) 0 var(--space-4) 0;
+    padding: 0 var(--space-4);
+  }
+  
+  .title {
+    font-size: var(--font-md);
+  }
+  
+  .carousel {
+    display: flex;
+    flex-direction: row;
+    background: linear-gradient(190.25deg, #FFD8BD -92.66%, #FFFFFF 112.07%);
+    padding: var(--space-4);
+    gap: var(--space-4);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border-radius: var(--radius-sm);
+  }
+  
+  .carousel::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .card {
+    width: 300px;
+    min-width: 300px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+  
+  .card.small-cards {
+    width: 300px;
+    min-width: 300px;
+  }
+}
+
+/* Tablet responsive styles */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .card {
+    width: 320px;
+  }
+  
+  .card.small-cards {
+    width: 220px;
+  }
+  
+  .carousel {
+    gap: var(--space-3);
+  }
+}
+
 .speaker-container {
   max-width: 1124px;
   margin: 0 auto;
@@ -75,4 +130,30 @@
   border: 1px solid var(--light-border);
   overflow: hidden;
   flex: 0 0 auto;
+}
+
+/* Mobile speaker carousel styles */
+@media (max-width: 767px) {
+  ::ng-deep .speaker-container .carousel.speaker-carousel {
+    display: flex;
+    flex-direction: row;
+    background: var(--whitish);
+    padding: var(--space-4);
+    gap: var(--space-4);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border-radius: var(--radius-sm);
+  }
+  
+  ::ng-deep .speaker-container .carousel.speaker-carousel::-webkit-scrollbar {
+    display: none;
+  }
+  
+  ::ng-deep .speaker-container .carousel.speaker-carousel .card-speaker {
+    width: 224px;
+    min-width: 224px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
 }

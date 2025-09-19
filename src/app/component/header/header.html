@@ -1,7 +1,11 @@
 <header class="header-wrapper">
   <div class="header-container d-container">
     <div class="left-section">
-      <img class="logo" src="assets/doc-logo.svg" alt="logo">
+      <img *ngIf="screenWidth > 768" class="logo" src="assets/doc-logo.svg" alt="logo">
+      <img *ngIf="screenWidth < 768"
+     class="logo back"
+     src="assets/icons/chevron-right.svg"
+     alt="back-icon">
       
       <div class="search-container">
         <input 
@@ -34,7 +38,7 @@
         <span>Post</span>
       </button>
 
-      <div class="user-section">
+      <div class="user-section" (click)="toggleSidebar()">
         <div class="avatar-container">
           <img src="assets/icons/ellipse-156.png" alt="Aaron" class="avatar">
           <img src="assets/icons/verified-badge-icon.svg" alt="Verified" class="verified-badge">

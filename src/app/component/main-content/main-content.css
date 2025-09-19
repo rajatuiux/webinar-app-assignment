@@ -1,3 +1,10 @@
 main{
     padding: 24px 0;
 }
+
+/* Mobile responsive styles - Android UI design */
+@media (max-width: 767px) {
+    main {
+        padding: 24px 0; /* Normal padding since tabs are no longer fixed */
+    }
+}

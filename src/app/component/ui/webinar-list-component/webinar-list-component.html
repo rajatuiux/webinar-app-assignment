@@ -1,3 +1,48 @@
+<!-- Full Screen Sidebar Overlay (Mobile) -->
+<div class="sidebar-overlay" [class.open]="isSidebarOpen" (click)="closeSidebar()">
+  <div class="sidebar-fullscreen" (click)="$event.stopPropagation()">
+    <div class="sidebar-header">
+      <h3 class="sidebar-title">Filters</h3>
+      <button class="close-btn" (click)="closeSidebar()">
+        <span>✕</span>
+      </button>
+    </div>
+    
+    <div class="sidebar-content">
+      <ng-container *ngFor="let filter of filters">
+        <div class="filter-section">
+          <div
+            class="filter-header"
+            role="button"
+            tabindex="0"
+            (click)="toggleAccordion(filter.key)"
+            [attr.aria-expanded]="accordionOpen[filter.key]">
+            <span class="filter-title">{{ filter.label }}</span>
+            <img
+              class="filter-arrow"
+              src="assets/icons/chevron-right.svg"
+              alt="toggle"
+              [class.rotated]="accordionOpen[filter.key]">
+          </div>
+
+          <div class="filter-content" [class.open]="accordionOpen[filter.key]">
+            <div class="filter-options">
+              <label class="filter-option" *ngFor="let item of filter.items">
+                <input
+                  type="checkbox"
+                  [checked]="isSelected(filter.key, item.name)"
+                  (change)="toggleSelection(filter.key, item.name, $event.target.checked)" />
+                <span class="checkmark"></span>
+                <span class="option-text">{{ item.name }}</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
 <!-- Browse by Topic Section -->
 <section class="browse-by-topic-section">
   <div class="container">

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { SidebarService } from '../../services/sidebar.service';
 
 interface NavigationItem {
   label: string;
@@ -17,7 +18,17 @@ interface NavigationItem {
   styleUrl: './header.css'
 })
 export class Header {
+  screenWidth = window.innerWidth;
   searchText: string = '';
+
+  ngOnInit() {
+    this.onResize();
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    this.screenWidth = window.innerWidth;
+  }
   
   navigationItems: NavigationItem[] = [
     {
@@ -52,7 +63,7 @@ export class Header {
     }
   ];
 
-  constructor() {
+  constructor(private sidebarService: SidebarService) {
     console.log('Header component initialized');
   }
 
@@ -77,5 +88,10 @@ export class Header {
   createPost() {
     alert('Create post clicked! This feature will be implemented soon.');
     console.log('Post button clicked');
+  }
+
+  toggleSidebar() {
+    this.sidebarService.toggleSidebar();
+    console.log('Sidebar toggled');
   }
 }

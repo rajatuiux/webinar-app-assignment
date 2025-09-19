@@ -18,8 +18,10 @@
 
 .left-section {
   display: grid;
+  max-width: 402px;
   grid-template-columns: 48px 1fr;
   gap: 16px;
+  flex: 1;
 }
 
 .logo {
@@ -41,6 +43,143 @@
   color: var(--dark-500);
   font-size: 14px;
   outline: none;
+}
+
+/* Mobile responsive styles - Android UI design */
+@media (max-width: 767px) {
+  .header-wrapper {
+    top: 0;
+    position: sticky;
+  }
+
+  .header-container {
+    padding: var(--space-10) var(--space-4) 16px var(--space-3);
+    justify-content: space-between;
+  }
+  
+  .left-section {
+    display: flex;
+    align-items: center;
+    grid-template-columns: none;
+    gap: var(--space-4);
+    flex: none;
+  }
+  
+  /* Back button (using placeholder) */
+  .logo {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-md);
+    font-weight: bold;
+    color: var(--primary-black);
+  }
+
+  img.logo.back{
+    transform: rotate(180deg);
+  }
+  
+  .logo::before {
+    content: "←";
+  }
+  
+  /* Page title */
+  .left-section::after {
+    content: "Webinar";
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--font-lg);
+    color: var(--primary-black);
+  }
+  
+  .search-container {
+    display: none !important;
+  }
+  
+  .navigation {
+    display: none !important;
+  }
+  
+  .nav-item {
+    display: none !important;
+  }
+  
+  .right-section {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+  
+  .post-button {
+    display: none !important;
+  }
+  
+  /* Search icon placeholder */
+  .right-section::before {
+    content: "🔍";
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: var(--font-md);
+  }
+  
+  /* Hamburger menu (replacing user section) */
+  .user-section {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+    gap: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .avatar-container {
+    display: none !important;
+  }
+  
+  .username {
+    display: none !important;
+  }
+  
+  .dropdown-icon {
+    display: none !important;
+  }
+  
+  /* Hamburger menu placeholder */
+  .user-section::before {
+    content: "☰";
+    font-size: var(--font-md);
+    color: var(--primary-black);
+    position: static;
+    transform: none;
+    width: auto;
+    height: auto;
+    background: none;
+    box-shadow: none;
+  }
+}
+
+/* Tablet responsive styles */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .search-input {
+    width: 280px;
+  }
+  
+  .navigation {
+    gap: 20px;
+  }
+  
+  .nav-item span {
+    font-size: 13px;
+  }
 }
 
 .search-input:focus {
